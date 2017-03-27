@@ -30,7 +30,6 @@ public class Client {
         frame.setMinimumSize(new Dimension(800, 600));
 
         frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
         return frame;
     }
 
