@@ -1,6 +1,7 @@
 package Gui;
 
 import Connection.Database;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
@@ -11,56 +12,34 @@ import java.sql.Statement;
 
 public class Client {
 
-    private JFrame client;
+    private TableView tableView;
+
+    private QueryView queryView;
 
     public Client(){
 
-       JFrame client = setupFrame();
-       client.add(setupPanel());
-       client.setVisible(true); // needed for osx for whatever reason
+       JFrame client = SetupFrame();
+       client.setLayout(new BorderLayout(8, 8));
+
+       tableView = new TableView();
+       queryView = new QueryView();
+
+       client.add(tableView, BorderLayout.CENTER);
+       client.add(queryView, BorderLayout.SOUTH);
+
+       client.setVisible(true);
     }
 
-    public JFrame setupFrame() {
+    public JFrame SetupFrame() {
 
     	JFrame frame = new JFrame();
 
-        frame.setPreferredSize(new Dimension(800, 600));
+        frame.setPreferredSize(new Dimension(800, 800));
         frame.setDefaultCloseOperation(JInternalFrame.EXIT_ON_CLOSE);
-
-        frame.setMinimumSize(new Dimension(800, 600));
+        frame.setMinimumSize(new Dimension(800, 800));
 
         frame.setLocationRelativeTo(null);
         return frame;
-    }
-
-    public JPanel setupPanel(){
-
-        GridBagConstraints c = new GridBagConstraints();
-
-        JPanel panel = new JPanel();
-        panel.setLayout(new GridBagLayout());
-
-        JButton test = new JButton("This is a test button!");
-
-        c.fill = GridBagConstraints.NONE;
-        c.anchor = GridBagConstraints.CENTER;
-        c.gridx = 0;
-        c.gridy = 0;
-        c.weightx = 0;
-        c.insets = new Insets(0, 0, 0, 0);
-
-        panel.add(test, c);
-
-        JButton test2 = new JButton("This is a second test button!");
-
-        c.gridy = 1;
-        c.gridx = 0;
-
-        panel.add(test2, c);
-
-
-        panel.add(test);
-        return panel;
     }
 
 
