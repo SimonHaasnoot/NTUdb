@@ -5,14 +5,13 @@ import java.awt.*;
 
 public class Client {
 
-    public Client(){
-
-       JFrame client = setupFrame();
+    public Client() {   
+    	JFrame client = setupFrame();
     }
 
-    public JFrame setupFrame(){
+    public JFrame setupFrame() {
 
-        JFrame frame = new JFrame();
+    	JFrame frame = new JFrame();
 
         frame.setPreferredSize(new Dimension(800, 600));
         frame.setDefaultCloseOperation(JInternalFrame.EXIT_ON_CLOSE);
