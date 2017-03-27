@@ -25,6 +25,7 @@ public class Database {
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("Can't connect to the database.");
+            return;
         }
 
         System.out.println("Connected to database");
