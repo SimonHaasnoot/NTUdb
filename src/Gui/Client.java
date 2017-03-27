@@ -13,9 +13,9 @@ public class Client {
        client.add(setupPanel());
     }
 
-    public JFrame setupFrame(){
+    public JFrame setupFrame() {
 
-        JFrame frame = new JFrame();
+    	JFrame frame = new JFrame();
 
         frame.setPreferredSize(new Dimension(800, 600));
         frame.setDefaultCloseOperation(JInternalFrame.EXIT_ON_CLOSE);

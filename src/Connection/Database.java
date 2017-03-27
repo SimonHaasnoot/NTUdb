@@ -9,14 +9,12 @@ public class Database {
 
     private Connection connection = null;
 
+    public Database() {}
 
-    public Database() {
-    }
-
-    public static void Initialize(String url, String username, String password){
+    public static void Initialize(String url, String username, String password) {
 
         if(instance == null)
-        instance = new Database();
+        	instance = new Database();
 
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
@@ -29,7 +27,5 @@ public class Database {
         }
 
         System.out.println("Connected to database");
-
-
     }
 }
