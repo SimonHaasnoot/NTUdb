@@ -1,7 +1,13 @@
 package Gui;
 
+import Connection.Database;
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class Client {
 
@@ -24,7 +30,6 @@ public class Client {
 
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
-
         return frame;
     }
 
@@ -57,4 +62,39 @@ public class Client {
         panel.add(test);
         return panel;
     }
+
+
+    /**
+     * Method to fill a JTable with the ResultSet of a query
+     * @param query
+     * @param table
+     * @throws SQLException
+     */
+    public void FillTable(String query, JTable table) throws SQLException {
+
+        //create connection to database
+        Connection conn = Database.getConnection();
+
+        //make your query
+        Statement statement = conn.createStatement();
+
+        //get ResultSet after entering your query
+        ResultSet result = statement.executeQuery(query);
+
+        while(table.getRowCount() > 0)
+        {
+            ((DefaultTableModel) table.getModel()).removeRow(0);
+        }
+        int columns = result.getMetaData().getColumnCount();
+        while(result.next())
+        {
+            Object[] row = new Object[columns];
+            for (int i = 1; i <= columns; i++)
+            {
+                row[i - 1] = result.getObject(i);
+            }
+            ((DefaultTableModel) table.getModel()).insertRow(result.getRow()-1,row);
+        }
+    }
+
 }
