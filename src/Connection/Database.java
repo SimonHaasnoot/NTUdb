@@ -32,4 +32,8 @@ public class Database {
 
         System.out.println("Connected to database");
     }
+
+    public static Connection getConnection(){
+        return instance.connection;
+    }
 }
