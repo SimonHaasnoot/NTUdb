@@ -17,6 +17,7 @@ public class Client {
 
        JFrame client = setupFrame();
        client.add(setupPanel());
+       client.setVisible(true); // needed for osx for whatever reason
     }
 
     public JFrame setupFrame() {
