@@ -41,7 +41,6 @@ public class Client {
             tableView.UpdateTableView(query);
         } catch (SQLException e) {
             e.printStackTrace();
-            System.out.println("Something went wrong with refreshing.");
         }
     }
 
