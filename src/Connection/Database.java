@@ -7,7 +7,9 @@ public class Database {
 
     private final static String username = "cringerxd";
     private final static String password = "Piskut123";
-    private final static String url = "jdbc:sqlserver://p7db.database.windows.net:1433;database=p7db;";
+    private final static String server = "p7db.database.windows.net:1433";
+    private final static String database = "p7db";
+    private final static String url = "jdbc:sqlserver://" + server + ";database="+ database + ";";
 
     private static Database instance = null;
 
