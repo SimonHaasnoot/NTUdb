@@ -26,20 +26,32 @@ public class LocalConnectionFrame {
         panel.add(label, c);
 
         JTextField serverInput = new JTextField();
-        serverInput.setPreferredSize(new Dimension(120, 20));
+        serverInput.setPreferredSize(new Dimension(144, 20));
         c.gridy = 1;
         panel.add(serverInput, c);
 
         c.gridy = 2;
-        JButton initDB = new JButton("Connect");
-        initDB.addActionListener(a -> {
 
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new BorderLayout());
+
+        panel.add(buttonPanel, c);
+
+        JButton connect = new JButton("Connect");
+        connect.addActionListener(a -> {
             String localdb = serverInput.getText();
             String localUrl = "jdbc:sqlserver://localhost:1433;databaseName=" + localdb + ";integratedSecurity=true;";
             Database.Initialize(localUrl, frame);
         });
+        buttonPanel.add(connect, BorderLayout.EAST);
 
-        panel.add(initDB, c);
+        JButton back = new JButton("Back");
+        back.addActionListener(a -> {
+            frame.dispose();
+            new ConnectionFrame();
+        });
+        buttonPanel.add(back, BorderLayout.WEST);
+
         frame.add(panel);
     }
 }

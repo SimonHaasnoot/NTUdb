@@ -12,25 +12,24 @@ public class OnlineConnectionFrame {
 
     public OnlineConnectionFrame(){
 
-
-        CustomFrame frame = new CustomFrame(300, 250);
+        GridBagConstraints c = new GridBagConstraints();
+        CustomFrame frame = new CustomFrame(260, 250);
 
         JPanel panel = new JPanel();
         panel.setLayout(new GridBagLayout());
         panel.setBorder((BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), "Online", TitledBorder.CENTER, TitledBorder.TOP)));
 
-        GridBagConstraints c = new GridBagConstraints();
 
         c.gridy = 0;
         c.gridx = 0;
-        c.insets = new Insets(8, 8, 8, 8);
+        c.insets = new Insets(8, 0, 8, 8);
         JLabel label = new JLabel("Username");
         panel.add(label, c);
 
         c.gridy = 0;
         c.gridx = 1;
         JTextField usernameInput = new JTextField();
-        usernameInput.setPreferredSize(new Dimension(120, 20));
+        usernameInput.setPreferredSize(new Dimension(140, 20));
         panel.add(usernameInput, c);
 
         c.gridy = 1;
@@ -41,7 +40,7 @@ public class OnlineConnectionFrame {
         c.gridy = 1;
         c.gridx = 1;
         JTextField passwordInput = new JTextField();
-        passwordInput.setPreferredSize(new Dimension(120, 20));
+        passwordInput.setPreferredSize(new Dimension(140, 20));
         panel.add(passwordInput, c);
 
 
@@ -53,7 +52,7 @@ public class OnlineConnectionFrame {
         c.gridy = 2;
         c.gridx = 1;
         JTextField serverInput = new JTextField();
-        serverInput.setPreferredSize(new Dimension(120, 20));
+        serverInput.setPreferredSize(new Dimension(140, 20));
         panel.add(serverInput, c);
 
         c.gridy = 3;
@@ -64,7 +63,7 @@ public class OnlineConnectionFrame {
         c.gridy = 3;
         c.gridx = 1;
         JTextField databaseInput = new JTextField();
-        databaseInput.setPreferredSize(new Dimension(120, 20));
+        databaseInput.setPreferredSize(new Dimension(140, 20));
         panel.add(databaseInput, c);
 
         c.gridy = 4;
@@ -80,6 +79,18 @@ public class OnlineConnectionFrame {
 
         c.gridy = 4;
         c.gridx = 1;
+
+        JPanel buttonPanel = new JPanel(new BorderLayout());
+        buttonPanel.setLayout(new BorderLayout());
+        panel.add(buttonPanel, c);
+
+        JButton back = new JButton("Back");
+        back.addActionListener(a -> {
+            frame.dispose();
+            new ConnectionFrame();
+        });
+        buttonPanel.add(back, BorderLayout.WEST);
+
         JButton connect = new JButton("connect");
         connect.addActionListener(a -> {
             String url = "jdbc:sqlserver://" + serverInput.getText() + ";database="+ databaseInput.getText() +
@@ -87,7 +98,7 @@ public class OnlineConnectionFrame {
             Database.Initialize(url, frame);
         });
 
-        panel.add(connect, c);
+        buttonPanel.add(connect, BorderLayout.EAST);
         frame.add(panel);
     }
 }
