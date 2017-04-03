@@ -1,13 +1,10 @@
-import Connection.Database;
-import Gui.Client;
+import Gui.ConnectionFrame;
 
 public class App {
 
     public static void main(String[] args) {
 
         System.out.println("Initializing connection.");
-
-        Database.Initialize();
-        new Client();
+        new ConnectionFrame();
     }
 }
