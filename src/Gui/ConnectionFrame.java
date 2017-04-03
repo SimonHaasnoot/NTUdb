@@ -9,10 +9,6 @@ import java.awt.*;
 public class ConnectionFrame  {
 
     public ConnectionFrame(){
-        CreateSelectGUI();
-    }
-
-    public void CreateSelectGUI(){
 
         CustomFrame frame = new CustomFrame(200, 200);
 
