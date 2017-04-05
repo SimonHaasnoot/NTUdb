@@ -50,14 +50,14 @@ public class QueryView extends JPanel {
         c.insets = new Insets(8, 8, 8, 8);
         c.gridx = 0;
         c.gridy = 0;
-        JButton b1 = new JButton("Opzegredenen");
-        b1.addActionListener(e -> client.RefreshTable("SELECT * FROM opzegreden"));
+        JButton b1 = new JButton("Webhistorie");
+        b1.addActionListener(e -> client.RefreshTable("SELECT * FROM webhistorie"));
         p1.add(b1, c);
 
         c.gridx = 0;
         c.gridy = 1;
-        JButton b2 = new JButton("Medewerkers");
-        b2.addActionListener(e -> client.RefreshTable("SELECT * FROM Medewerker"));
+        JButton b2 = new JButton("Medewerkers(Training)");
+        b2.addActionListener(e -> client.RefreshTable("SELECT Medewerker.voornaam, Medewerker.achternaam, Training.cursus FROM Medewerker JOIN Training ON Training.medewerker = Medewerker.code"));
         p1.add(b2, c);
     }
 
