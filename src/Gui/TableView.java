@@ -37,7 +37,7 @@ public class TableView extends JPanel {
     public void UpdateTableView(String query) throws SQLException {
 
         //create connection to database
-        Connection conn = Database.getConnection();
+        Connection conn = Database.GetConnection();
 
         //make your query
         Statement statement = conn.createStatement();

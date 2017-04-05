@@ -37,7 +37,7 @@ public class Database {
         new Client();
     }
 
-    public static Connection getConnection(){
+    public static Connection GetConnection(){
         return instance.connection;
     }
 }
